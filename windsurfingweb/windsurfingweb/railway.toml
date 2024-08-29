@@ -1,0 +1,11 @@
+[build]
+builder = "nixpacks"
+buildCommand = "pip install -r requirements.txt"
+
+[deploy]
+startCommand = "gunicorn windsurfingweb.wsgi:application"
+healthcheckPath = "/"
+healthcheckTimeout = 100
+
+[nixpacks]
+python-version = "3.11"

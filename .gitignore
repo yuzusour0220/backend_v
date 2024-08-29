@@ -1,0 +1,4 @@
+*.pyc
+Lib/
+Scripts/
+windsurfingweb/local_settings.py
