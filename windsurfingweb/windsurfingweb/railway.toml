@@ -1,11 +1,15 @@
 [build]
 builder = "nixpacks"
-buildCommand = "pip install -r requirements.txt"
+buildCommand = """
+pip install -r requirements.txt
+python manage.py collectstatic --noinput
+"""
 
 [deploy]
 startCommand = "gunicorn windsurfingweb.wsgi:application"
 healthcheckPath = "/"
 healthcheckTimeout = 100
+envs = { DJANGO_SETTINGS_MODULE = "windsurfingweb.settings", STATIC_ROOT = "/app/staticfiles" }
 
 [nixpacks]
 python-version = "3.11"
