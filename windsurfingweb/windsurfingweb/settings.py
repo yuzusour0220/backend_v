@@ -163,7 +163,7 @@ REST_FRAMEWORK = {
     )
 }
 
-
+CSRF_TRUSTED_ORIGINS = ['https://backendv-copy-production.up.railway.app']
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
