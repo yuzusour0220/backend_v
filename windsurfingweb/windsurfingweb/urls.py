@@ -20,8 +20,8 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.urls import path, include, re_path
 from django.views.static import serve
-from ..website_app import api_views
-from ..website_app.api_views import login_view
+from website_app import api_views
+from website_app.api_views import login_view
 
 members_list = api_views.MembersViewSet.as_view({
     'get': 'list',
