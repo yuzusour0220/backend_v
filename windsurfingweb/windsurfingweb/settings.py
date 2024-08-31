@@ -165,8 +165,9 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = "media/"
+MEDIA_ROOT = os.environ["RAILWAY_VOLUME_MOUNT_PATH"]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -190,15 +191,3 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',  # ReactアプリのURL
 ]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-WHITENOISE_USE_FINDERS = True
-WHITENOISE_MANIFEST_STRICT = False
-WHITENOISE_ALLOW_ALL_ORIGINS = True
-
-
-
-# メディアファイル用のS3ストレージを設定
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-# メディアファイルのURL
-MEDIA_URL ="https://kyodaiweb.s3.ap-southeast-2.amazonaws.com/kyodaiwind/"
