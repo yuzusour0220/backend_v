@@ -1,1 +1,1 @@
-web: gunicorn windsurfingweb.wsgi
+web: python manage.py migrate && python manage.py createsuperuser --noinput && gunicorn windsurfingweb.wsgi
