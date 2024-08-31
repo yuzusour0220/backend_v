@@ -18,9 +18,10 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
-from django.urls import path, include
-from website_app import api_views
-from website_app.api_views import login_view
+from django.urls import path, include, re_path
+from django.views.static import serve
+from ..website_app import api_views
+from ..website_app.api_views import login_view
 
 members_list = api_views.MembersViewSet.as_view({
     'get': 'list',
@@ -87,5 +88,4 @@ urlpatterns = [
     path("api/shushoaisatsu/<int:pk>/", api_views.ShushoaisatsuViewSet.as_view({"get": "retrieve"})),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += [ re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT})]
