@@ -87,5 +87,5 @@ urlpatterns = [
     path("api/shushoaisatsu/<int:pk>/", api_views.ShushoaisatsuViewSet.as_view({"get": "retrieve"})),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
